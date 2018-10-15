@@ -1,0 +1,17 @@
+{
+    "name": "joshuathackeray/laravel-repositories",
+    "authors": [
+        {
+            "name": "Josh Thackeray",
+            "email": "me@joshthackeray.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JoshThackeray\\Repositories\\RepositoriesServiceProvider"
+            ]
+        }
+    }
+}
