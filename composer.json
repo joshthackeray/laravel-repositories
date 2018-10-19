@@ -13,5 +13,10 @@
                 "JoshThackeray\\Repositories\\RepositoriesServiceProvider"
             ]
         }
+    },
+    "autoload": {
+        "psr-4": {
+            "JoshThackeray\\Repositories\\": "src/"
+        }
     }
 }
