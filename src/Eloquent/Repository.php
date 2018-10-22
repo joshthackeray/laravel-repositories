@@ -153,6 +153,19 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Returns all rows with the current criteria as paginated results.
+     *
+     * @param int $perPage
+     * @param array $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function paginate($perPage = 15, $columns = array('*'))
+    {
+        $this->applyCriteria();
+        return $this->model->paginate($perPage, $columns);
+    }
+
+    /**
      * Returns a single row for the current Model by ID.
      *
      * @param $id
