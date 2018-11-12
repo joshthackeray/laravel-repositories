@@ -141,6 +141,33 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * A given set of standardized formats for each field in the repository when creating/updating.
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return mixed
+     */
+    public function formatting($key, $value)
+    {
+        //Alter $value here and will take effect when creating/updating records in the DB.
+        return $value;
+    }
+
+    /**
+     * Applies the current repos formats to each value in an array.
+     *
+     * @param array $data
+     * @return array
+     */
+    public function applyFormats(array $data)
+    {
+        $data = collect($data);
+        return $data->map(function ($value, $key) {
+            return $this->formatting($key, $value);
+        })->toArray();
+    }
+
+    /**
      * Returns all rows for the current Model.
      *
      * @param array $columns
@@ -269,6 +296,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function create(array $data)
     {
+        $data = $this->applyFormats($data);
+
         return $this->model->create($data);
     }
 
@@ -281,6 +310,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function update($id, array $data)
     {
+        $data = $this->applyFormats($data);
+
         $model = $this->find($id);
         return $model->update($data);
     }
@@ -295,6 +326,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function updateOrCreate(array $where, array $data)
     {
+        $data = $this->applyFormats($data);
+
         return $this->model->updateOrCreate($where, $data);
     }
 
@@ -307,6 +340,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function updateWhere(array $where, array $data)
     {
+        $data = $this->applyFormats($data);
+
         return $this->model->where($where)->update($data);
     }
 
@@ -320,6 +355,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function updateWhereIn($field, array $values, array $data)
     {
+        $data = $this->applyFormats($data);
+
         return $this->model->whereIn($field, $values)->update($data);
     }
 
@@ -333,6 +370,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function updateWhereNotIn($field, array $values, array $data)
     {
+        $data = $this->applyFormats($data);
+
         return $this->model->whereNotIn($field, $values)->update($data);
     }
 

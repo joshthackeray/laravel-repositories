@@ -5,6 +5,11 @@ namespace JoshThackeray\Repositories\Criteria;
 interface CriteriaInterface
 {
     /**
+     * @return mixed
+     */
+    public function resetScope();
+
+    /**
      * @param bool $status
      * @return mixed
      */

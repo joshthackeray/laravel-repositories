@@ -4,6 +4,10 @@ namespace JoshThackeray\Repositories;
 
 interface RepositoryInterface
 {
+    public function formatting($key, $value);
+
+    public function applyFormats(array $data);
+
     public function all($columns = array('*'));
 
     public function paginate($perPage = 15, $columns = array('*'));
