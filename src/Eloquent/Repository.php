@@ -395,6 +395,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function deleteWhere(array $where)
     {
+        $this->applyCriteria();
+
         return $this->model->where($where)->delete();
     }
 
@@ -407,6 +409,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function deleteWhereIn($field, array $values)
     {
+        $this->applyCriteria();
+
         return $this->model->whereIn($field, $values)->delete();
     }
 
@@ -420,6 +424,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function deleteWhereNotIn($field, array $values)
     {
+        $this->applyCriteria();
+
         return $this->model->whereNotIn($field, $values)->delete();
     }
 
