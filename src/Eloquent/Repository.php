@@ -169,6 +169,16 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Returns the current model object as it is.
+     *
+     * @return Model
+     */
+    public function builder()
+    {
+        return $this->model;
+    }
+
+    /**
      * Returns all rows for the current Model.
      *
      * @param array $columns

@@ -8,6 +8,8 @@ interface RepositoryInterface
 
     public function applyFormats(array $data);
 
+    public function builder();
+
     public function all($columns = array('*'));
 
     public function paginate($perPage = 15, $columns = array('*'));
