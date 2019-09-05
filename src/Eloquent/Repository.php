@@ -169,7 +169,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * Returns the query builder from the current repo model.
+     * Returns the query builder from the current repository model.
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
