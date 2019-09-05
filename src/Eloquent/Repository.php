@@ -170,11 +170,13 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 
     /**
      * Returns the query builder from the current repo model.
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function builder()
     {
+        $this->applyCriteria();
+
         return $this->model->query();
     }
 
